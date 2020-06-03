@@ -1,5 +1,8 @@
 package leetCode;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 /**
  * Created by mengxijie on 2020/6/3.
  * Dota2 的世界里有两个阵营：Radiant(天辉)和 Dire(夜魇)
@@ -22,10 +25,39 @@ package leetCode;
 
  假设每一位参议员都足够聪明，会为自己的政党做出最好的策略，你需要预测哪一方最终会宣布胜利并在 Dota2 游戏中决定改变。输出应该是 Radiant 或 Dire。
 
- 来源：力扣（LeetCode）
- 链接：https://leetcode-cn.com/problems/dota2-senate
- 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
 public class PredictPartyVictory {
+    public String predictPartyVictory(String senate) {
+        //存放R的队列
+        Queue<Integer> radiant = new LinkedList<>();
+        //存放D的队列
+        Queue<Integer> dire = new LinkedList<>();
+        int n = senate.length();
+        char c;
+        //给R和D队列放数据
+        for (int i = 0; i < n; i++) {
+            c = senate.charAt(i);
+            if (c == 'R') {
+                radiant.offer(i);
+            } else {
+                dire.offer(i);
+            }
+        }
+        while (!radiant.isEmpty() && !dire.isEmpty()) {
+            int r = radiant.remove();
+            int d = dire.remove();
+            //把先出现的R或者D留下。并且让他们排在下一轮，故+n
+            if (r < d) {
+                radiant.offer(r + n);
+            } else {
+                dire.offer(d + n);
+            }
+        }
+        return radiant.isEmpty() ? "Dire" : "Radiant";
+    }
 
+    public static void main(String[] args) {
+        PredictPartyVictory victory = new PredictPartyVictory();
+        victory.predictPartyVictory("DDRRR");
+    }
 }
