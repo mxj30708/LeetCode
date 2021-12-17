@@ -11,3 +11,11 @@
 2012-12-15
 文件:LoudAndRich.java \
 题目：851. 喧闹和富有
+
+2012-12-15
+文件:VisiblePoints.java \
+题目：1610. 可见点的最大数目
+
+2012-12-16
+文件:NumWaterBottles.java \
+题目：1518. 换酒问题
