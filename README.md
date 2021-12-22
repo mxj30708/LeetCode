@@ -23,3 +23,7 @@
 2012-12-21
 文件:DayOfYear.java \
 题目：1154. 一年中的第几天
+
+2012-12-22
+文件:RepeatedStringMatch.java \
+题目：686. 重复叠加字符串匹配
